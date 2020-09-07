@@ -8,6 +8,10 @@ public class FluidStackPart extends Part<FluidStack> {
 
   @Override
   public boolean matches(FluidStack fluidStack) {
+    if (fluidStack == null) {
+      return amount == 0;
+    }
+
     return (
         fluidStack.amount == 0
             && amount == 0

@@ -4,6 +4,17 @@
     "model": "randommachines:jar"
   },
   "variants": {
+    "variant": {
+      "0": {
+        "model": "randommachines:jar"
+      },
+      "1": {
+        "model": "randommachines:jar_lid"
+      },
+      "2": {
+        "model": "randommachines:jar_tilt"
+      }
+    },
     "normal": [{}],
     "inventory": [{}]
   }

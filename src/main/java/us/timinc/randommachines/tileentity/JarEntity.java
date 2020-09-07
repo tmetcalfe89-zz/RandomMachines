@@ -1,11 +1,13 @@
 package us.timinc.randommachines.tileentity;
 
-import net.minecraft.init.Items;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
@@ -13,8 +15,8 @@ import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.items.ItemStackHandler;
 import us.timinc.randommachines.RandomMachines;
+import us.timinc.randommachines.block.JarBlock;
 import us.timinc.randommachines.recipes.JarRecipe;
-import us.timinc.randommachines.recipes.Recipe;
 import us.timinc.randommachines.recipes.ingredients.JarIngredientWrapper;
 import us.timinc.randommachines.recipes.outputs.Output;
 
@@ -48,11 +50,7 @@ public class JarEntity extends TileEntity implements ITickable {
       markDirty();
     }
   };
-  private int progress;
-
-  public JarEntity() {
-    super();
-  }
+  private int progress = 0;
 
   @Override
   public void update() {
@@ -67,6 +65,10 @@ public class JarEntity extends TileEntity implements ITickable {
           Map<String, Output> outputs = matching.getOutputs();
           fluidStorage.fill((FluidStack) outputs.get("fluid").create(), true);
           itemStorage.setStackInSlot(0, (ItemStack) outputs.get("item").create());
+
+          if (world != null) {
+            world.setBlockState(pos, world.getBlockState(pos).withProperty(JarBlock.VARIANT, 2));
+          }
         }
       }
     }
@@ -159,5 +161,10 @@ public class JarEntity extends TileEntity implements ITickable {
       fluidStorage.getFluid(),
       getItemIngredient()
     );
+  }
+
+  @Override
+  public boolean shouldRefresh(World world, BlockPos pos, IBlockState oldState, IBlockState newSate) {
+    return false;
   }
 }

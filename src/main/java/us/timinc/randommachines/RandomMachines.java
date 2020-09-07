@@ -6,12 +6,15 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import org.apache.logging.log4j.Logger;
 import us.timinc.randommachines.command.CommandRecipe;
+import us.timinc.randommachines.proxy.CommonProxy;
 import us.timinc.randommachines.recipes.JarRecipe;
 import us.timinc.randommachines.recipes.RecipeDeserializer;
 import org.apache.logging.log4j.LogManager;
@@ -23,6 +26,9 @@ public class RandomMachines {
   public static final String MODID = "randommachines";
   public static final String NAME = "Random Machines";
   public static final String VERSION = "1.0";
+
+  @SidedProxy(clientSide = "us.timinc.randommachines.proxy.ClientProxy", serverSide = "us.timinc.randommachines.proxy.ServerProxy")
+  public static CommonProxy proxy;
 
   @Mod.Instance
   public static RandomMachines instance;
@@ -56,20 +62,8 @@ public class RandomMachines {
     recipes = new Recipes();
   }
 
-  @Mod.EventBusSubscriber
-  public static class RegistryEvents {
-    @SubscribeEvent
-    public static void registerBlocks(RegistryEvent.Register<Block> e) {
-      e.getRegistry().register(ModBlocks.jarBlock);
-
-      GameRegistry.registerTileEntity(JarEntity.class, new ResourceLocation("randommachines:jarentity"));
-    }
-
-    @SubscribeEvent
-    public static void registerItems(RegistryEvent.Register<Item> e) {
-      e.getRegistry().register(ModItems.lidItem);
-
-      e.getRegistry().register(new ItemBlock(ModBlocks.jarBlock).setRegistryName(ModBlocks.jarBlock.getRegistryName()));
-    }
+  @Mod.EventHandler
+  public void postInit(FMLPostInitializationEvent e) {
+    proxy.postInit(e);
   }
 }
