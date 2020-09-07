@@ -19,7 +19,6 @@ import us.timinc.randommachines.recipes.Recipes;
 import us.timinc.randommachines.tileentity.JarEntity;
 
 @Mod(modid = us.timinc.randommachines.RandomMachines.MODID, name = us.timinc.randommachines.RandomMachines.NAME, version = us.timinc.randommachines.RandomMachines.VERSION)
-@Mod.EventBusSubscriber
 public class RandomMachines {
   public static final String MODID = "randommachines";
   public static final String NAME = "Random Machines";
@@ -57,17 +56,20 @@ public class RandomMachines {
     recipes = new Recipes();
   }
 
-  @SubscribeEvent
-  public static void registerBlocks(RegistryEvent.Register<Block> e) {
-    e.getRegistry().register(ModBlocks.jarBlock);
+  @Mod.EventBusSubscriber
+  public static class RegistryEvents {
+    @SubscribeEvent
+    public static void registerBlocks(RegistryEvent.Register<Block> e) {
+      e.getRegistry().register(ModBlocks.jarBlock);
 
-    GameRegistry.registerTileEntity(JarEntity.class, new ResourceLocation("randommachines:jarentity"));
-  }
+      GameRegistry.registerTileEntity(JarEntity.class, new ResourceLocation("randommachines:jarentity"));
+    }
 
-  @SubscribeEvent
-  public static void registerItems(RegistryEvent.Register<Item> e) {
-    e.getRegistry().register(ModItems.lidItem);
+    @SubscribeEvent
+    public static void registerItems(RegistryEvent.Register<Item> e) {
+      e.getRegistry().register(ModItems.lidItem);
 
-    e.getRegistry().register(new ItemBlock(ModBlocks.jarBlock).setRegistryName(ModBlocks.jarBlock.getRegistryName()));
+      e.getRegistry().register(new ItemBlock(ModBlocks.jarBlock).setRegistryName(ModBlocks.jarBlock.getRegistryName()));
+    }
   }
 }
