@@ -1,0 +1,16 @@
+[
+{
+  "modid": "randommachines",
+  "name": "Random Machines",
+  "description": "An assortment of random machines with JSON recipes in the config folder.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["TimInc"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
