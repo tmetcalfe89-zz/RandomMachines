@@ -1,7 +1,15 @@
 package us.timinc.randommachines;
 
 import net.minecraft.item.Item;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ModItems {
-  public static Item lidItem = new Item().setRegistryName(RandomMachines.MODID, "lid").setUnlocalizedName(RandomMachines.MODID + ".lid");
+  @GameRegistry.ObjectHolder("randommachines:lid")
+  public static Item lidItem;
+
+  @SideOnly(Side.CLIENT)
+  public static void initModels() {
+  }
 }
