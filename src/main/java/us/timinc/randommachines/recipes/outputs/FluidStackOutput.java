@@ -9,6 +9,9 @@ public class FluidStackOutput extends Output<FluidStack> {
 
   @Override
   public FluidStack create() {
+    if (amount == 0) {
+      return null;
+    }
     FluidStack createdFluidStack = new FluidStack(FluidRegistry.getFluid(name), amount);
     return createdFluidStack;
   }
