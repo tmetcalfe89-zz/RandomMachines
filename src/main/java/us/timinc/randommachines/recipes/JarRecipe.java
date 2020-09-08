@@ -3,16 +3,16 @@ package us.timinc.randommachines.recipes;
 import us.timinc.randommachines.recipes.outputs.FluidStackOutput;
 import us.timinc.randommachines.recipes.outputs.ItemStackOutput;
 import us.timinc.randommachines.recipes.outputs.Output;
-import us.timinc.randommachines.recipes.parts.FluidStackPart;
-import us.timinc.randommachines.recipes.parts.ItemStackPart;
+import us.timinc.randommachines.recipes.inputs.FluidStackInput;
+import us.timinc.randommachines.recipes.inputs.ItemStackInput;
 import us.timinc.randommachines.recipes.ingredients.JarIngredientWrapper;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class JarRecipe extends Recipe<JarIngredientWrapper> {
-  public FluidStackPart fluidInput = new FluidStackPart();
-  public ItemStackPart itemInput = new ItemStackPart();
+  public FluidStackInput fluidInput = new FluidStackInput();
+  public ItemStackInput itemInput = new ItemStackInput();
   public FluidStackOutput fluidOutput = new FluidStackOutput();
   public ItemStackOutput itemOutput = new ItemStackOutput();
   public int duration = 200;

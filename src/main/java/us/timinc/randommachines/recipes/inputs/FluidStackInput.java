@@ -1,8 +1,8 @@
-package us.timinc.randommachines.recipes.parts;
+package us.timinc.randommachines.recipes.inputs;
 
 import net.minecraftforge.fluids.FluidStack;
 
-public class FluidStackPart extends Part<FluidStack> {
+public class FluidStackInput extends Input<FluidStack> {
   public String name = "";
   public int amount = 0;
 

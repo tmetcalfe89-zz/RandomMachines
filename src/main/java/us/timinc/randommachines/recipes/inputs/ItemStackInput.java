@@ -1,4 +1,4 @@
-package us.timinc.randommachines.recipes.parts;
+package us.timinc.randommachines.recipes.inputs;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -6,7 +6,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.regex.Pattern;
 
-public class ItemStackPart extends Part<ItemStack> {
+public class ItemStackInput extends Input<ItemStack> {
   public String name = "";
   public int damage = 0;
   public int amount = 0;
