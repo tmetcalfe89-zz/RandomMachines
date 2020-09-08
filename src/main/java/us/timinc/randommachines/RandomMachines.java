@@ -25,7 +25,7 @@ import us.timinc.randommachines.tileentity.JarEntity;
 public class RandomMachines {
   public static final String MODID = "randommachines";
   public static final String NAME = "Random Machines";
-  public static final String VERSION = "1.0";
+  public static final String VERSION = "1.0.3";
 
   @SidedProxy(clientSide = "us.timinc.randommachines.proxy.ClientProxy", serverSide = "us.timinc.randommachines.proxy.ServerProxy")
   public static CommonProxy proxy;
